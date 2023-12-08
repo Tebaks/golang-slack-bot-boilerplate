@@ -1,0 +1,10 @@
+channels:
+  slack-bot-test:
+    enabled: true
+    id: channel-id
+    description: Channel to test slack bot
+    messages:
+      hi-test-bot:
+        enabled: true
+        description: When someone say hi to bot, bot will say hi back
+        text: hi test-bot
