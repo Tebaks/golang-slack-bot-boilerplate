@@ -11,12 +11,12 @@ type Handler interface {
 }
 
 type handler struct {
-	sentEventHandler slashcommand.Handler
+	sayHiHandler slashcommand.Handler
 }
 
 func NewHandler(sayHiCommandHandler slashcommand.Handler) Handler {
 	return &handler{
-		sentEventHandler: sayHiCommandHandler,
+		sayHiHandler: sayHiCommandHandler,
 	}
 }
 
@@ -24,7 +24,7 @@ func (h *handler) Handle(evt *socketmode.Event, client *socketmode.Client) error
 	data := evt.Data.(slack.SlashCommand)
 	switch data.Command {
 	case "/hi":
-		err := h.sentEventHandler.HandleCommand(evt, client)
+		err := h.sayHiHandler.HandleCommand(evt, client)
 		if err != nil {
 			return err
 		}
